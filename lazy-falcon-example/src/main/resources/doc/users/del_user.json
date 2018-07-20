@@ -1,0 +1,33 @@
+{
+  "module": "系统权限-用户",
+  "moduleItem": "删除用户",
+  "url": "/users/:id",
+  "method": "delete",
+  "author": "风清扬",
+  "desc": "通过该API可以删除一个系统用户",
+  "createDate": "2018-05-02",
+  "lstUpdDate": "2018-06-02",
+  "reqParams": [
+
+  ],
+
+
+  "resParams":[
+    {
+      "title": "接口响应参数",
+      "items": [
+        {"name": "code", "desc": "响应码", "type":"String", "remark": ""},
+        {"name": "msg", "desc": "响应消息", "type":"String", "remark": ""},
+        {"name": "data", "desc": "响应业务参数","type":"String", "remark": "参看响应Code描述"}
+      ]
+    },
+    {
+      "title": "响应Code描述",
+      "items": [
+        {"name": "200", "desc": "成功","type":"String", "remark": ""},
+        {"name": "400", "desc": "请求参数错误","type":"String", "remark": ""},
+        {"name": "500", "desc": "服务器错误","type":"String", "remark": ""}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "resParamField": "code",
+      "resParamFieldDesc": "响应Code",
+      "resParamFieldType": "String",
+      "resParamFieldRemark": ""
+    },
+    {
+      "resParamField": "message",
+      "resParamFieldDesc": "响应消息",
+      "resParamFieldType": "String",
+      "resParamFieldRemark": ""
+    }
+  ,
+    {
+      "resParamField": "data",
+      "resParamFieldDesc": "响应业务数据",
+      "resParamFieldType": "Object",
+      "resParamFieldRemark": "参看List<Example>描述"
+    }
+  ]
+}

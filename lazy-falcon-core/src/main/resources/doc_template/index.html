@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Full Layout - jQuery EasyUI Demo</title>
+    <link rel="stylesheet" type="text/css" href="./css/easyui.css">
+    <link rel="stylesheet" type="text/css" href="./css/icon.css">
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.easyui.min.js"></script>
+</head>
+<!--全屏布局-->
+<body class="easyui-layout">
+<!--导航-->
+<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px">
+    <span id="navTitle" style="color:darkslateblue;font-size: x-large;">Example API文档</span>
+</div>
+<!--左侧栏-->
+<div data-options="region:'west',split:true,title:'接口模块菜单'" style="width:200px;padding:10px;">
+    <div class="easyui-panel" style="padding:5px">
+        <ul id="sidebarTree" class="easyui-tree" data-options="url:'sidebar_tree.json',method:'get',animate:true,dnd:true"></ul>
+    </div>
+</div>
+<!--内容-->
+<div data-options="region:'center',title:'接口描述内容'">
+    <!--Tab页-->
+    <div id="mainTabs" class="easyui-tabs">
+        <!--Tab Item-->
+    </div>
+</div>
+
+<script>
+    $('#sidebarTree').tree({
+        onSelect: function(node){
+            addTab(node.text, node.url);
+        }
+    });
+
+    function addTab(title, url){
+        if (!url){
+            return;
+        }
+        if ($('#mainTabs').tabs('exists', title)){
+            $('#mainTabs').tabs('select', title);
+        } else {
+            var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width: 100%;height: 200vh;"></iframe>';
+            $('#mainTabs').tabs('add',{
+                title:title,
+                content:content,
+                closable:true
+            });
+        }
+    }
+</script>
+</body>
+</html>

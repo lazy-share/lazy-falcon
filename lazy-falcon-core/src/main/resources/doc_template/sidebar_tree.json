@@ -1,0 +1,10 @@
+[{
+	"id":1,
+	"text":"ExampleModule",
+	"url": "",
+	"children":[{
+		"id":11,
+		"text":"ExampleModuleItem",
+		"url": "http://127.0.0.1:8080/api_doc/modules/example.html"
+	}]
+}]

@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "reqParamField": "name",
+      "reqParamFieldDesc": "名称",
+      "reqParamFieldType": "String",
+      "reqParamFieldRequired": "是"
+    },
+    {
+      "reqParamField": "age",
+      "reqParamFieldDesc": "年龄",
+      "reqParamFieldType": "Integer",
+      "reqParamFieldRequired": "是"
+    }
+  ,
+    {
+      "reqParamField": "mobile",
+      "reqParamFieldDesc": "手机号码",
+      "reqParamFieldType": "String",
+      "reqParamFieldRequired": "是"
+    }
+  ]
+}

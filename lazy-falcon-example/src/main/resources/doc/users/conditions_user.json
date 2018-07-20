@@ -1,0 +1,62 @@
+{
+  "module": "系统权限-用户",
+  "moduleItem": "获取用户分页列表",
+  "url": "/users/conditions",
+  "method": "post",
+  "author": "风清扬",
+  "desc": "通过该API可以分页查询系统用户",
+  "createDate": "2018-05-02",
+  "lstUpdDate": "2018-06-02",
+  "reqParams": [
+    {
+      "title": "接口请求参数",
+      "items": [
+        {"name": "paging", "desc": "分页参数", "required": true, "type": "Object", "remark": "参看Paging参数描述", "fieldsTitle":"Paging参数描述"},
+        {"name": "conditions", "desc": "查询条件", "required": true, "type": "Object", "remark": "参看Conditions参数描述", "fieldsTitle": "Conditions参数描述"}
+      ]
+    },
+    {
+      "title": "Paging参数描述",
+      "items": [
+        {"name": "currentPage", "desc": "当前页", "required": true, "type": "Integer", "remark": "默认为1"},
+        {"name": "pageSize", "desc": "每页大小", "required": true, "type": "Integer", "remark": "默认为10"},
+        {"name": "sortField", "desc": "排序字段", "required": true, "type": "String", "remark": "默认为 lstUpdTime"},
+        {"name": "sortType", "desc": "排序类型", "required": true, "type": "String", "remark": "默认为 DESC"}
+      ]
+    },
+    {
+      "title": "Conditions参数描述",
+      "items": [
+        {"name": "loginName", "desc": "登录名称", "required": true, "type": "String", "remark": ""},
+        {"name": "mobile", "desc": "手机号码", "required": true, "type": "String", "remark": ""}
+      ]
+    }
+  ],
+
+
+  "resParams":[
+    {
+      "title": "接口响应参数",
+      "items": [
+        {"name": "code", "desc": "响应码","type":"String",  "remark": ""},
+        {"name": "msg", "desc": "响应消息","type":"String", "remark": ""},
+        {"name": "data", "desc": "响应业务参数","type":"String", "remark": "参看响应data描述"}
+      ]
+    },
+    {
+      "title": "响应data描述",
+      "items": [
+        {"name": "rows", "type": "List<User>", "desc": "结果集", "remark": "参看响应rows明细描述"},
+        {"name": "total", "type": "Integer", "desc": "总条数", "remark": ""}
+      ]
+    },
+    {
+      "title": "响应rows明细描述",
+      "items": [
+        {"name": "loginName", "desc": "登录名称", "required": true, "type": "String", "remark": ""},
+        {"name": "mobile", "desc": "手机号码", "required": true, "type": "String", "remark": ""},
+        {"name": "password", "desc": "密码", "required": false, "type": "String", "remark": ""}
+      ]
+    }
+  ]
+}

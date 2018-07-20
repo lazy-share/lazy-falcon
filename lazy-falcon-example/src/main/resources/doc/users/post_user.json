@@ -1,0 +1,41 @@
+{
+  "module": "系统权限-用户",
+  "moduleItem": "修改用户",
+  "url": "/users",
+  "method": "post",
+  "author": "风清扬",
+  "desc": "通过该API可以修改系统用户",
+  "createDate": "2018-05-02",
+  "lstUpdDate": "2018-06-02",
+  "reqParams": [
+    {
+      "title": "接口请求参数",
+      "items": [
+        {"name": "loginName", "desc": "登录名称", "required": true, "type": "String", "remark": ""},
+        {"name": "id", "desc": "数据库主键", "required": true, "type": "Long", "remark": ""},
+        {"name": "mobile", "desc": "手机号码", "required": true, "type": "String", "remark": ""},
+        {"name": "password", "desc": "密码", "required": false, "type": "String", "remark": ""}
+      ]
+    }
+  ],
+
+
+  "resParams":[
+    {
+      "title": "接口响应参数",
+      "items": [
+        {"name": "code", "desc": "响应码","type":"String",  "remark": ""},
+        {"name": "msg", "desc": "响应消息","type":"String", "remark": ""},
+        {"name": "data", "desc": "响应业务参数","type":"String", "remark": "参看响应Code描述"}
+      ]
+    },
+    {
+      "title": "响应Code描述",
+      "items": [
+        {"name": "200", "desc": "成功","type":"String", "remark": ""},
+        {"name": "400", "desc": "请求参数错误","type":"String", "remark": ""},
+        {"name": "500", "desc": "服务器错误","type":"String", "remark": ""}
+      ]
+    }
+  ]
+}

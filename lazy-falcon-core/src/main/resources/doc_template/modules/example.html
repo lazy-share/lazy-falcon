@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+</head>
+<body>
+<div title="Example Add" data-options="iconCls:'icon-help',closable:true" style="padding:10px">
+    <div class="easyui-panel" title="接口基本描述">
+        <div id="apiBasicInfo">
+            <form>
+                <table cellpadding="5" cellspacing="20">
+                    <tr>
+                        <td>作者:</td>
+                        <td>
+                            <input id="apiAuthor" disabled class="easyui-textbox" data-options="multiline:true"
+                                   style="width: 200px;"
+                                   value="风清扬"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>接口描述:</td>
+                        <td>
+                            <input id="apiDesc" disabled class="easyui-textbox" data-options="multiline:true"
+                                   style="height:60px;width: 300px; align-content: center;"
+                                   value="这是一个例子"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>请求URL:</td>
+                        <td>
+                            <input id="apiUrl" disabled class="easyui-textbox" type="text" data-options="required:true"
+                                   style="width: 300px;" value="http://localhost:8080/examples"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>请求Method:</td>
+                        <td>
+                            <input id="apiMethod" disabled class="easyui-textbox" type="text"
+                                   data-options="required:true"
+                                   style="width: 80px;" value="PUT"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>创建时间:</td>
+                        <td>
+                            <input id="apiCreateTime" disabled class="easyui-textbox" type="text"
+                                   data-options="required:true"
+                                   style="width: 200px;" value="2018-06-02"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>最后更新时间:</td>
+                        <td>
+                            <input id="apiLstUpdTime" disabled class="easyui-textbox" type="text"
+                                   data-options="required:true"
+                                   style="width: 200px;" value="2018-06-03"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <table class="easyui-datagrid" title="请求参数描述" data-options="url:'./req/req_param_example.json',method:'get'">
+        <thead>
+        <tr>
+            <th data-options="field:'reqParamField',align:'center',width:'15%'">字段</th>
+            <th data-options="field:'reqParamFieldDesc',align:'center',width:'15%'">描述</th>
+            <th data-options="field:'reqParamFieldType',align:'center',width:'15%'">类型</th>
+            <th data-options="field:'reqParamFieldRequired',align:'center',width:'15%'">是否必须</th>
+            <th data-options="field:'reqParamFieldRemark',width:'45%',align:'center'">备注</th>
+        </tr>
+        </thead>
+    </table>
+
+    <table class="easyui-datagrid" title="响应参数描述"
+           data-options="url:'./res/res_param_example.json',method:'get'">
+        <thead>
+        <tr>
+            <th data-options="field:'resParamField',width:'15%'">字段</th>
+            <th data-options="field:'resParamFieldDesc',width:'15%'">描述</th>
+            <th data-options="field:'resParamFieldType',width:'15%',align:'center'">类型</th>
+            <th data-options="field:'resParamFieldRemark',width:'60%',align:'center'">备注</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+</body>
+</html>

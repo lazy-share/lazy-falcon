@@ -1,0 +1,56 @@
+{
+  "module": "系统权限-用户组",
+  "moduleItem": "添加用户组",
+  "url": "/groups",
+  "method": "PUT",
+  "author": "风清扬",
+  "desc": "通过该API可以新增一个系统用户组",
+  "createDate": "2018-05-02",
+  "lstUpdDate": "2018-06-02",
+  "reqParams": [
+    {
+      "title": "接口请求参数",
+      "items": [
+        {"name": "groupName", "desc": "用户组名称", "required": true, "type": "String", "remark": ""},
+        {"name": "groupCode", "desc": "用户组编码", "required": true, "type": "String", "remark": ""},
+        {"name": "roles", "desc": "该组拥有的角色列表", "required": true, "type": "List", "remark": "参看角色详细描述", "fieldsTitle": "角色详细描述"}
+      ]
+    },
+    {
+      "title": "角色详细描述",
+      "items": [
+        {"name": "roleName", "desc": "角色名称", "required": true, "type": "String", "remark": ""},
+        {"name": "roleDesc", "desc": "角色描述", "required": true, "type": "String", "remark": ""},
+        {"name": "users", "desc": "关联该角色的用户", "required": true, "type": "List", "remark": "参看用户详细描述", "fieldsTitle": "用户详细描述"}
+      ]
+    },
+    {
+      "title": "用户详细描述",
+      "items": [
+        {"name": "loginName", "desc": "登录名称", "required": true, "type": "String", "remark": ""},
+        {"name": "password", "desc": "登录密码", "required": true, "type": "String", "remark": ""},
+        {"name": "mobile", "desc": "手机号码", "required": true, "type": "String", "remark": "" }
+      ]
+    }
+  ],
+
+
+  "resParams":[
+    {
+      "title": "接口响应参数",
+      "items": [
+        {"name": "code", "desc": "响应码",  "remark": "参看响应Code描述", "fieldsTitle":"响应Code描述"},
+        {"name": "msg", "desc": "响应消息", "remark": ""},
+        {"name": "data", "desc": "响应业务参数", "remark": "参看请求参数字段描述描述"}
+      ]
+    },
+    {
+      "title": "响应Code描述",
+      "items": [
+        {"name": "200", "desc": "成功", "remark": ""},
+        {"name": "400", "desc": "请求参数错误", "remark": ""},
+        {"name": "500", "desc": "服务器错误", "remark": ""}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+</head>
+<body>
+<div id="apiDocDiv" title="AddExample" data-options="iconCls:'icon-help',closable:true" style="padding:10px">
+    <div class="easyui-panel" title="接口基本描述">
+        <div id="apiBasicInfo">
+            <form>
+                <table cellpadding="5" cellspacing="20">
+                    <tr>
+                        <td>作者:</td>
+                        <td>
+                            <input id="apiAuthor" disabled class="easyui-textbox" data-options="multiline:true"
+                                   style="width: 200px;"
+                                   value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>接口描述:</td>
+                        <td>
+                            <input id="apiDesc" disabled class="easyui-textbox" data-options="multiline:true"
+                                   style="height:60px;width: 300px; align-content: center;"
+                                   value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>请求URL:</td>
+                        <td>
+                            <input id="apiUrl" disabled class="easyui-textbox" type="text" data-options="required:true"
+                                   style="width: 300px;" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>请求Method:</td>
+                        <td>
+                            <input id="apiMethod" disabled class="easyui-textbox" type="text"
+                                   data-options="required:true"
+                                   style="width: 80px;" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>创建时间:</td>
+                        <td>
+                            <input id="apiCreateTime" disabled class="easyui-textbox" type="text"
+                                   data-options="required:true"
+                                   style="width: 200px;" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>最后更新时间:</td>
+                        <td>
+                            <input id="apiLstUpdTime" disabled class="easyui-textbox" type="text"
+                                   data-options="required:true"
+                                   style="width: 200px;" value=""/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div class="easyui-panel" title="发起测试" style="width:100%;">
+        <table width="100%">
+            <tr>
+                <td>请求URL</td>
+                <td><input class="easyui-textbox" style="width: 80%;" type="text" id="reqURL20180606666" value=""></td>
+            </tr>
+            <tr>
+                <td>Method</td>
+                <td><input class="easyui-textbox" type="text" id="reqMethod20180606666" value="" disabled></td>
+            </tr>
+            <tr>
+                <td>请求Headers:</td>
+                <td> <textarea style="width: 80%;height: 100px;" id="testReqHeaderTextarea" placeholder='示例：{"jwtToken": "ABCDEFG123456"}'></textarea></td>
+            </tr>
+            <tr id="testParamTr">
+                <td>请求参数:</td>
+                <td> <textarea style="width: 80%;height: 300px;" id="testParamTextarea"></textarea></td>
+            </tr>
+            <tr>
+                <td><a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="submitTest()">提交请求</a></td>
+                <td><a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="againTest()">重新测试</a></td>
+            </tr>
+            <tr>
+                <td>响应结果:</td>
+                <td> <textarea style="width: 80%;height: 300px;" id="testResultTextarea"></textarea></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+    function againTest() {
+        $("#testParamTextarea").val(testParamTextareaVal);
+        $('#reqURL20180606666').val($('#apiUrl').val());
+        $('#testResultTextarea').val('');
+    }
+    function closeTestResultDialog() {
+        $('#testResultDialog').dialog('close');
+    }
+    function submitTest() {
+        var apiUrl = $('#reqURL20180606666').val();
+        var apiMethod = $('#apiMethod').val();
+        var xhrOpt = {
+            type: apiMethod,
+            url: apiUrl,
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                $('#testResultTextarea').val(formatJson(JSON.stringify(data)));
+                $('#testResultDialog').dialog('open');
+            },
+            error: function (err) {
+                $('#testResultTextarea').val(JSON.stringify(err));
+                $('#testResultDialog').dialog('open');
+            }
+        };
+        var params = $('#testParamTextarea').val();
+        if (params){
+            params = JSON.stringify(JSON.parse(params));
+            xhrOpt.data = params;
+        }
+        var reqHeaders = $('#testReqHeaderTextarea').val();
+        if (reqHeaders){
+            xhrOpt.headers = JSON.parse(reqHeaders);
+        }
+        $.ajax(xhrOpt);
+    }
+    function repeat(s, count) {
+        return new Array(count + 1).join(s);
+    }
+    function formatJson(json) {
+        var i = 0,
+            len = 0,
+            tab = "    ",
+            targetJson = "",
+            indentLevel = 0,
+            inString = false,
+            currentChar = null;
+        for (i = 0, len = json.length; i < len; i += 1) {
+            currentChar = json.charAt(i);
+
+            switch (currentChar) {
+                case '{':
+                case '[':
+                    if (!inString) {
+                        targetJson += currentChar + "\n" + repeat(tab, indentLevel + 1);
+                        indentLevel += 1;
+                    } else {
+                        targetJson += currentChar;
+                    }
+                    break;
+                case '}':
+                case ']':
+                    if (!inString) {
+                        indentLevel -= 1;
+                        targetJson += "\n" + repeat(tab, indentLevel) + currentChar;
+                    } else {
+                        targetJson += currentChar;
+                    }
+                    break;
+                case ',':
+                    if (!inString) {
+                        targetJson += ",\n" + repeat(tab, indentLevel);
+                    } else {
+                        targetJson += currentChar;
+                    }
+                    break;
+                case ':':
+                    if (!inString) {
+                        targetJson += ": ";
+                    } else {
+                        targetJson += currentChar;
+                    }
+                    break;
+                case ' ':
+                case "\n":
+                case "\t":
+                    if (inString) {
+                        targetJson += currentChar;
+                    }
+                    break;
+                case '"':
+                    if (i > 0 && json.charAt(i - 1) !== '\\') {
+                        inString = !inString;
+                    }
+                    targetJson += currentChar;
+                    break;
+                default:
+                    targetJson += currentChar;
+                    break;
+            }
+        }
+        return targetJson;
+    }
+    var testParamTextareaVal;
+    $(function () {
+        $('#testDialog').dialog('close');
+        $('#testResultDialog').dialog('close');
+        testParamTextareaVal = $('#testParamTextarea').val();
+        if (testParamTextareaVal){
+            testParamTextareaVal = formatJson(testParamTextareaVal);
+            $('#testParamTextarea').val(testParamTextareaVal);
+        }else {
+            $('#testParamTr').attr('style', 'display:none;');
+        }
+    });
+</script>
+</body>
+</html>
