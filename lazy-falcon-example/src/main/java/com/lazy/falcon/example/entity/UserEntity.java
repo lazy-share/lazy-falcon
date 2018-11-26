@@ -1,5 +1,7 @@
 package com.lazy.falcon.example.entity;
 
+import com.lazy.falcon.common.annotaion.ApiParamItem;
+
 import java.io.Serializable;
 
 /**
@@ -10,8 +12,11 @@ import java.io.Serializable;
  */
 public class UserEntity implements Serializable {
 
+    @ApiParamItem(value = "登录账号")
     private String loginName;
+    @ApiParamItem(value = "密码")
     private String password;
+    @ApiParamItem(value = "手机")
     private String mobile;
 
     public String getLoginName() {

@@ -9,6 +9,7 @@
 </head>
 <body>
 <div id="apiDocDiv" title="AddExample" data-options="iconCls:'icon-help',closable:true" style="padding:10px">
+    <input type="hidden" id="isRequestBody"/>
     <div class="easyui-panel" title="接口基本描述">
         <div id="apiBasicInfo">
             <form>
@@ -76,19 +77,22 @@
             </tr>
             <tr>
                 <td>请求Headers:</td>
-                <td> <textarea style="width: 80%;height: 100px;" id="testReqHeaderTextarea" placeholder='示例：{"jwtToken": "ABCDEFG123456"}'></textarea></td>
+                <td><textarea style="width: 80%;height: 100px;" id="testReqHeaderTextarea"
+                              placeholder='示例：{"jwtToken": "ABCDEFG123456"}'></textarea></td>
             </tr>
             <tr id="testParamTr">
                 <td>请求参数:</td>
-                <td> <textarea style="width: 80%;height: 300px;" id="testParamTextarea"></textarea></td>
+                <td><textarea style="width: 80%;height: 300px;" id="testParamTextarea"></textarea></td>
             </tr>
             <tr>
-                <td><a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="submitTest()">提交请求</a></td>
-                <td><a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="againTest()">重新测试</a></td>
+                <td><a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+                       onclick="submitTest()">提交请求</a></td>
+                <td><a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload'"
+                       onclick="againTest()">重新测试</a></td>
             </tr>
             <tr>
                 <td>响应结果:</td>
-                <td> <textarea style="width: 80%;height: 300px;" id="testResultTextarea"></textarea></td>
+                <td><textarea style="width: 80%;height: 300px;" id="testResultTextarea"></textarea></td>
             </tr>
         </table>
     </div>
@@ -96,12 +100,13 @@
 <script>
     function againTest() {
         $("#testParamTextarea").val(testParamTextareaVal);
-        $('#reqURL20180606666').val($('#apiUrl').val());
         $('#testResultTextarea').val('');
     }
+
     function closeTestResultDialog() {
         $('#testResultDialog').dialog('close');
     }
+
     function submitTest() {
         var apiUrl = $('#reqURL20180606666').val();
         var apiMethod = $('#apiMethod').val();
@@ -120,19 +125,22 @@
             }
         };
         var params = $('#testParamTextarea').val();
-        if (params){
+        if (params) {
             params = JSON.stringify(JSON.parse(params));
             xhrOpt.data = params;
         }
         var reqHeaders = $('#testReqHeaderTextarea').val();
-        if (reqHeaders){
+        if (reqHeaders) {
             xhrOpt.headers = JSON.parse(reqHeaders);
         }
         $.ajax(xhrOpt);
     }
+
+
     function repeat(s, count) {
         return new Array(count + 1).join(s);
     }
+
     function formatJson(json) {
         var i = 0,
             len = 0,
@@ -197,16 +205,21 @@
         }
         return targetJson;
     }
+
     var testParamTextareaVal;
     $(function () {
         $('#testDialog').dialog('close');
         $('#testResultDialog').dialog('close');
         testParamTextareaVal = $('#testParamTextarea').val();
-        if (testParamTextareaVal){
-            testParamTextareaVal = formatJson(testParamTextareaVal);
-            $('#testParamTextarea').val(testParamTextareaVal);
-        }else {
-            $('#testParamTr').attr('style', 'display:none;');
+        var isRequestBody = $('#isRequestBody').val();
+        if (testParamTextareaVal) {
+            if (isRequestBody) {
+                testParamTextareaVal = formatJson(testParamTextareaVal);
+                $('#testParamTextarea').val(testParamTextareaVal);
+            } else {
+                $('#testParamTextarea').val('');
+                $('#testParamTr').attr('style', 'display:none;');
+            }
         }
     });
 </script>

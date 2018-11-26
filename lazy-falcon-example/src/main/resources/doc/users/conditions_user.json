@@ -11,8 +11,8 @@
     {
       "title": "接口请求参数",
       "items": [
-        {"name": "paging", "desc": "分页参数", "required": true, "type": "Object", "remark": "参看Paging参数描述", "fieldsTitle":"Paging参数描述"},
-        {"name": "conditions", "desc": "查询条件", "required": true, "type": "Object", "remark": "参看Conditions参数描述", "fieldsTitle": "Conditions参数描述"}
+        {"name": "paging", "desc": "分页参数", "required": true, "type": "Object", "remark": "参看Paging参数描述", "groupTitle":"Paging参数描述"},
+        {"name": "conditions", "desc": "查询条件", "required": true, "type": "Object", "remark": "参看Conditions参数描述", "groupTitle": "Conditions参数描述"}
       ]
     },
     {

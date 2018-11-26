@@ -1,6 +1,6 @@
 package com.lazy.falcon.core.model.output;
 
-import com.lazy.falcon.core.tools.SetsUtils;
+import com.lazy.falcon.common.tools.SetsUtils;
 
 import java.util.List;
 

@@ -5,8 +5,6 @@
   "method": "PUT",
   "author": "风清扬",
   "desc": "通过该API可以新增一个系统用户",
-  "createDate": "2018-05-02",
-  "lstUpdDate": "2018-06-02",
   "reqParams": [
     {
       "title": "接口请求参数",

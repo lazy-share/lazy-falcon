@@ -1,56 +1,44 @@
 package com.lazy.falcon.example.dto;
 
+import com.lazy.falcon.common.annotaion.ApiParamGroup;
+import com.lazy.falcon.common.annotaion.ApiParamItem;
+
 import java.io.Serializable;
 
 /**
  * <p>
- *     结果DTO
+ * 结果DTO
  * </p>
  *
  * @author laizhiyuan
  * @date 2018/6/2.
  */
-public class ResponseDto implements Serializable {
+public class ResponseDto<V> implements Serializable {
 
     private static final long serialVersionUID = 99942L;
 
     /**
      * 响应Code
      */
+    @ApiParamItem(value = "响应Code", remark = "200:成功；500:服务器错误; 400：请求参数错误")
     private String code;
 
     /**
      * 响应消息
      */
+    @ApiParamItem(value = "响应消息")
     private String message;
 
     /**
      * 响应业务数据
      */
-    private Object data;
+    @ApiParamGroup(value = "业务数据描述", isParamItem = true, remark = "参看业务数据描述", groupTitle = "业务数据描述", isUseModuleCls = true)
+    private V data;
 
-    public static ResponseDto buildDto(String code, String message, Object data) {
-        ResponseDto dto = new ResponseDto();
-        dto.code = code;
-        dto.message = message;
-        dto.data = data;
-        return dto;
-    }
-
-    public static ResponseDto buildSuccessfully(String message, Object data){
-        ResponseDto dto = new ResponseDto();
-        dto.code = "200";
-        dto.message = message;
-        dto.data = data;
-        return dto;
-    }
-
-    public static ResponseDto buildSuccessfully(Object data){
-        ResponseDto dto = new ResponseDto();
-        dto.code = "200";
-        dto.message = "success";
-        dto.data = data;
-        return dto;
+    public ResponseDto(String code, String message, V data) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
     }
 
     public String getCode() {
@@ -69,11 +57,11 @@ public class ResponseDto implements Serializable {
         this.message = message;
     }
 
-    public Object getData() {
+    public V getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(V data) {
         this.data = data;
     }
 }

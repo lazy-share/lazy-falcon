@@ -1,6 +1,8 @@
 package com.lazy.falcon.example.entity;
 
-import com.lazy.falcon.core.tools.SetsUtils;
+import com.lazy.falcon.common.annotaion.ApiParamGroup;
+import com.lazy.falcon.common.annotaion.ApiParamItem;
+import com.lazy.falcon.common.tools.SetsUtils;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,9 +15,12 @@ import java.util.List;
  */
 public class RoleEntity implements Serializable {
 
+    @ApiParamItem("角色名称")
     private String roleName;
+    @ApiParamItem("角色描述")
     private String roleDesc;
 
+    @ApiParamGroup(linkCls = UserEntity.class, excludeItems = {"loginName"}, isParamItem = true, remark = "参看角色关联用户", groupTitle = "角色关联用户")
     private List<UserEntity> users = SetsUtils.list();
 
     public List<UserEntity> getUsers() {

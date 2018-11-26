@@ -13,7 +13,7 @@
       "items": [
         {"name": "groupName", "desc": "用户组名称", "required": true, "type": "String", "remark": ""},
         {"name": "groupCode", "desc": "用户组编码", "required": true, "type": "String", "remark": ""},
-        {"name": "roles", "desc": "该组拥有的角色列表", "required": true, "type": "List", "remark": "参看角色详细描述", "fieldsTitle": "角色详细描述"}
+        {"name": "roles", "desc": "该组拥有的角色列表", "required": true, "type": "List", "remark": "参看角色详细描述", "groupTitle": "角色详细描述"}
       ]
     },
     {
@@ -21,7 +21,7 @@
       "items": [
         {"name": "roleName", "desc": "角色名称", "required": true, "type": "String", "remark": ""},
         {"name": "roleDesc", "desc": "角色描述", "required": true, "type": "String", "remark": ""},
-        {"name": "users", "desc": "关联该角色的用户", "required": true, "type": "List", "remark": "参看用户详细描述", "fieldsTitle": "用户详细描述"}
+        {"name": "users", "desc": "关联该角色的用户", "required": true, "type": "List", "remark": "参看用户详细描述", "groupTitle": "用户详细描述"}
       ]
     },
     {
@@ -39,7 +39,7 @@
     {
       "title": "接口响应参数",
       "items": [
-        {"name": "code", "desc": "响应码",  "remark": "参看响应Code描述", "fieldsTitle":"响应Code描述"},
+        {"name": "code", "desc": "响应码",  "remark": "参看响应Code描述", "groupTitle":"响应Code描述"},
         {"name": "msg", "desc": "响应消息", "remark": ""},
         {"name": "data", "desc": "响应业务参数", "remark": "参看请求参数字段描述描述"}
       ]

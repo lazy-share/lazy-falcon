@@ -1,7 +1,7 @@
 package com.lazy.falcon.core.constants;
 
 import com.alibaba.fastjson.JSON;
-import com.lazy.falcon.core.tools.SetsUtils;
+import com.lazy.falcon.common.tools.SetsUtils;
 
 import java.io.File;
 import java.net.URL;
