@@ -1,3 +1,5 @@
+## 项目描述
+
 项目描述：
 该项目基于注解或JSON配置文件方式为Controller自动生成API，前后端分离后为减少接口沟通成本而开发和设计；
 目前市面上有swagger rap等类似的框架；
@@ -25,4 +27,6 @@ git clone https://github.com/lazy-share/lazy-falcon.git
 具体使用方式请细看lazy-falcon-example项目的例子；
 
 
+## 关注我
 
+![微信公众号](https://github.com/lazy-share/generate-db-dict/blob/master/images/weixin.jpg)
